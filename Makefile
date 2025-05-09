@@ -1,6 +1,6 @@
 #  Copyright 2021 Synology Inc.
 
-REGISTRY_NAME=ghcr.io/zebernst
+REGISTRY_NAME=ghcr.io/dancavallaro
 IMAGE_NAME=synology-csi
 IMAGE_VERSION=v1.2.0
 IMAGE_TAG=$(REGISTRY_NAME)/$(IMAGE_NAME):$(IMAGE_VERSION)
@@ -25,7 +25,7 @@ docker-build:
 	docker buildx build -t $(IMAGE_TAG) . --push
 
 docker-build-multiarch:
-	docker buildx build -t $(IMAGE_TAG) --platform linux/amd64,linux/arm/v7,linux/arm64 . --push
+	docker buildx build -t $(IMAGE_TAG) --platform linux/amd64,linux/arm64 . --push
 
 synocli:
 	@mkdir -p bin

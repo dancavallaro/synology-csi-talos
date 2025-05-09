@@ -3,7 +3,6 @@ kind: ServiceAccount
 metadata:
   name: csi-controller-sa
   namespace: synology-csi
-
 ---
 kind: ClusterRole
 apiVersion: rbac.authorization.k8s.io/v1
@@ -64,7 +63,6 @@ roleRef:
   kind: ClusterRole
   name: synology-csi-controller-role
   apiGroup: rbac.authorization.k8s.io
-
 ---
 kind: StatefulSet
 apiVersion: apps/v1
@@ -144,7 +142,7 @@ spec:
             capabilities:
               add: ["SYS_ADMIN"]
             allowPrivilegeEscalation: true
-          image: ghcr.io/zebernst/synology-csi:v1.2.0
+          image: ghcr.io/dancavallaro/synology-csi:v1.2.0
           args:
             - --nodeid=NotUsed
             - --endpoint=$(CSI_ENDPOINT)
